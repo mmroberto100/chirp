@@ -1,6 +1,6 @@
 plugins {
     id("chirp.kotlin-common")
-    id("org.spring.framework.boot")
+    id("org.springframework.boot")
     id("io.spring.dependency-management")
 }
 
