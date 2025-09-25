@@ -1,4 +1,4 @@
-package com.mmunoz.user.domain.model
+package com.mmunoz.chirp.domain.model
 
 data class AuthenticatedUser(
     val user: User,
