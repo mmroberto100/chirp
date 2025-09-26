@@ -18,6 +18,6 @@ fun User.toUserDto(): UserDto {
         id = id,
         email = email,
         username = username,
-        hasVerifiedEmail = hasEmailVerifier
+        hasVerifiedEmail = hasEmailVerified
     )
 }
