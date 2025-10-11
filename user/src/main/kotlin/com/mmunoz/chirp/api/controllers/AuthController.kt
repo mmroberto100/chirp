@@ -1,10 +1,14 @@
 package com.mmunoz.chirp.api.controllers
 
+import com.mmunoz.chirp.api.dto.AuthenticatedUserDto
+import com.mmunoz.chirp.api.dto.LoginRequest
 import com.mmunoz.chirp.api.dto.RegisterRequest
 import com.mmunoz.chirp.api.dto.UserDto
+import com.mmunoz.chirp.api.mappers.toAuthenticatedUserDto
 import com.mmunoz.chirp.api.mappers.toUserDto
 import com.mmunoz.chirp.service.auth.AuthService
 import jakarta.validation.Valid
+import org.springframework.security.authentication.jaas.LoginExceptionResolver
 import org.springframework.web.bind.annotation.PostMapping
 import org.springframework.web.bind.annotation.RequestBody
 import org.springframework.web.bind.annotation.RequestMapping
@@ -23,6 +27,16 @@ class AuthController(private val authService: AuthService) {
             username = body.username,
             password = body.password
         ).toUserDto()
+    }
+
+    @PostMapping("/login")
+    fun login(
+        @RequestBody body: LoginRequest
+    ): AuthenticatedUserDto {
+        return authService.login(
+            email = body.email,
+            password = body.password
+        ).toAuthenticatedUserDto()
     }
 
 }
